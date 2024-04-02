@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxf1x61os4wdb"]
+
+[ext_resource type="Script" path="res://Scripts/Tier1.gd" id="1_r61o6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fuvvp"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_r61o6")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1, 0)
+
+[node name="GrassPatchy2" type="Sprite2D" parent="ParallaxLayer"]
+modulate = Color(0, 0.14902, 0.176471, 0.792157)
+position = Vector2(238, 349)
+scale = Vector2(0.478516, 1)
+texture = SubResource("CompressedTexture2D_fuvvp")

@@ -1,0 +1,255 @@
+[gd_scene load_steps=34 format=3 uid="uid://bsvt0ge8ayh46"]
+
+[ext_resource type="Script" path="res://Scenes/demoparallax.gd" id="1_42a7b"]
+[ext_resource type="Shader" path="res://Scenes/player.gdshader" id="2_byq74"]
+[ext_resource type="Script" path="res://Scenes/PlayerMovements.gd" id="2_mdg3g"]
+[ext_resource type="Texture2D" uid="uid://q0mdp135sjuh" path="res://Assets/Tiers/Forest/grass_patchy2.png" id="3_eqsqh"]
+[ext_resource type="Texture2D" uid="uid://hfjka3kdjgpk" path="res://Assets/Powers/ball.png" id="4_55r5s"]
+[ext_resource type="Shader" path="res://Scenes/bola.gdshader" id="5_5q1md"]
+[ext_resource type="Texture2D" uid="uid://bxmaiyli8h7b7" path="res://Assets/Powers/pixil-frame-0 (51).png" id="5_e6mk3"]
+[ext_resource type="Texture2D" uid="uid://b2bqwtvskqggh" path="res://Assets/Tiers/Forest/Free-Top-Down-Trees-Pixel-Art2-removebg-preview (1).png" id="6_m535x"]
+[ext_resource type="Texture2D" uid="uid://dkfjsxq3xhdqu" path="res://Assets/Tiers/Forest/pino.png" id="7_g2sr3"]
+[ext_resource type="Shader" path="res://Scenes/sombra.gdshader" id="8_o605k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kkb10"]
+friction = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tiljj"]
+shader = ExtResource("2_byq74")
+shader_parameter/shadow_offset = Vector2(5, -5)
+shader_parameter/shadow_color = Vector4(0, 0, 0, 0.3)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d7fum"]
+load_path = "res://.godot/imported/BODY_male_Epic_armors_Golden.png-d4118d7b8a7984e2682a1ad90533e3b9.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67asu"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06b6a"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqko0"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtupo"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr84w"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utv1i"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8a0n"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js1pk"]
+atlas = SubResource("CompressedTexture2D_d7fum")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl4yq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67asu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06b6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqko0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtupo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr84w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utv1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8a0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js1pk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8s7c"]
+shader = ExtResource("5_5q1md")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22q4c"]
+atlas = ExtResource("4_55r5s")
+region = Rect2(0, 192, 99, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypvft"]
+atlas = ExtResource("4_55r5s")
+region = Rect2(99, 192, 99, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3yul"]
+atlas = ExtResource("4_55r5s")
+region = Rect2(198, 192, 99, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_74dof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22q4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypvft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3yul")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_17e6m"]
+
+[sub_resource type="Curve" id="Curve_iikwr"]
+min_value = -1.0
+_data = [Vector2(0.0217391, 1), 0.0, -2.15101, 0, 0, Vector2(0.835404, -0.178947), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6qoi5"]
+max_value = 200.0
+_data = [Vector2(0.428571, 35.7895), 0.0, -86.0819, 0, 0, Vector2(0.492236, 126.316), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmleb"]
+render_priority = 0
+shader = ExtResource("8_o605k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbxrs"]
+shader = ExtResource("5_5q1md")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhpvr"]
+shader = ExtResource("2_byq74")
+shader_parameter/shadow_offset = Vector2(5, -5)
+shader_parameter/shadow_color = Vector4(0, 0, 0, 0.3)
+
+[node name="player" type="Node2D"]
+script = ExtResource("1_42a7b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_kkb10")
+
+[node name="PlayerSkin" type="AnimatedSprite2D" parent="StaticBody2D"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_tiljj")
+use_parent_material = true
+position = Vector2(263.5, 695.5)
+scale = Vector2(1.07812, 1.14062)
+sprite_frames = SubResource("SpriteFrames_gl4yq")
+autoplay = "default"
+frame = 7
+frame_progress = 0.691101
+script = ExtResource("2_mdg3g")
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D/PlayerSkin"]
+editor_draw_screen = false
+
+[node name="power" type="AnimatedSprite2D" parent="StaticBody2D/PlayerSkin"]
+z_index = 2
+texture_filter = 1
+material = SubResource("ShaderMaterial_c8s7c")
+position = Vector2(-37, 21)
+scale = Vector2(0.479167, 0.479167)
+sprite_frames = SubResource("SpriteFrames_74dof")
+autoplay = "default"
+frame_progress = 0.00856889
+offset = Vector2(10, 50)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StaticBody2D/PlayerSkin/power"]
+z_index = -1
+material = SubResource("CanvasItemMaterial_17e6m")
+position = Vector2(11, 53)
+scale = Vector2(1.38069, 1.88111)
+amount = 6
+lifetime = 0.5
+speed_scale = 0.4
+randomness = 1.0
+texture = ExtResource("5_e6mk3")
+emission_shape = 2
+emission_sphere_radius = 9.14
+gravity = Vector2(0, -126)
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+radial_accel_min = 20.0
+radial_accel_max = 20.0
+hue_variation_max = 0.66
+hue_variation_curve = SubResource("Curve_iikwr")
+anim_speed_min = 36.46
+anim_speed_max = 37.24
+anim_speed_curve = SubResource("Curve_6qoi5")
+
+[node name="sombra" type="Sprite2D" parent="StaticBody2D/PlayerSkin/power"]
+self_modulate = Color(0, 0, 0, 0.407843)
+material = SubResource("ShaderMaterial_mmleb")
+position = Vector2(25.998, 97.9725)
+scale = Vector2(0.378048, 0.304943)
+texture = ExtResource("4_55r5s")
+hframes = 3
+vframes = 4
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(38, 116)
+motion_mirroring = Vector2(0, 919)
+
+[node name="Sprite" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(281, 314)
+scale = Vector2(0.661581, 0.901367)
+texture = ExtResource("3_eqsqh")
+
+[node name="Free-top-down-trees-pixel-art2-removebg-preview(1)6" type="Sprite2D" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_lbxrs")
+position = Vector2(89, 853)
+scale = Vector2(1.6087, 1.6087)
+texture = ExtResource("6_m535x")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="CanvasModulate"]
+energy = 0.71
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.941176)
+max_distance = 9896.0
+
+[node name="Pino" type="Sprite2D" parent="CanvasModulate/DirectionalLight2D"]
+z_index = 2
+texture_filter = 1
+position = Vector2(333, 210)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_g2sr3")
+
+[node name="Pino3" type="Sprite2D" parent="CanvasModulate/DirectionalLight2D"]
+z_index = 2
+position = Vector2(86, 99)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_g2sr3")
+
+[node name="Pino2" type="Sprite2D" parent="CanvasModulate/DirectionalLight2D"]
+z_index = 2
+material = SubResource("ShaderMaterial_rhpvr")
+position = Vector2(115, 252)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_g2sr3")
